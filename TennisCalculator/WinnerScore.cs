@@ -2,7 +2,7 @@
 
 namespace TennisCalculator;
 
-public class WinnerScore : IScore
+public class WinnerScore : IPointValue
 {
     public int Value
     {

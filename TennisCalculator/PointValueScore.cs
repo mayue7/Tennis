@@ -2,7 +2,7 @@ using TennisCalculator.Interfaces;
 
 namespace TennisCalculator;
 
-public class PointValueScore : IScore
+public class PointValueScore : IPointValue
 {
     private int points;
 

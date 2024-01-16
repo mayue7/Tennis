@@ -1,6 +1,6 @@
 namespace TennisCalculator.Interfaces;
 
-public interface IScore
+public interface IPointValue
 {
     public int Value { get; }
 }

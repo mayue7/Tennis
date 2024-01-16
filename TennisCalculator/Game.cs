@@ -4,27 +4,25 @@ namespace TennisCalculator;
 
 public class Game : IGame
 {
-    private IPlayerScore playerScore1;
-    private IPlayerScore playerScore2;
-    public int MatchId { get; }
+    private IGameScore playerOneGameScore;
+    private IGameScore playerTwoGameScore;
 
-    public Game(int matchId, IPlayer player1, IPlayer player2)
+    public Game(IPlayer player1, IPlayer player2)
     {
-        this.MatchId = matchId;
-        playerScore1 = new PlayerScore(player1);
-        playerScore2 = new PlayerScore(player2);
+        playerOneGameScore = new GameScore(player1);
+        playerTwoGameScore = new GameScore(player2);
     }
 
     public void PlayerWinPoint(IPlayer player)
     {
-        if (playerScore1.Player == player)
+        if (playerOneGameScore.Player == player)
         {
-            RoundPoint(playerScore1, playerScore2);
+            RoundPoint(playerOneGameScore, playerTwoGameScore);
         }
         else
-        if (playerScore2.Player == player)
+        if (playerTwoGameScore.Player == player)
         {
-            RoundPoint(playerScore2, playerScore1);
+            RoundPoint(playerTwoGameScore, playerOneGameScore);
         }
         else
         {
@@ -32,7 +30,7 @@ public class Game : IGame
         }
     }
 
-    private void RoundPoint(IPlayerScore pointWinner, IPlayerScore pointLoser)
+    private void RoundPoint(IGameScore pointWinner, IGameScore pointLoser)
     {
         if (pointWinner.HasAdvantage)
         {
@@ -76,42 +74,42 @@ public class Game : IGame
 
     }
 
-    public bool GameEnd => Winner != null;
+    public bool GameEnd => GameWinner != null;
 
-    public IPlayer Winner
+    public IPlayer GameWinner
     {
         get
         {
-            if (playerScore1.IsWinner)
+            if (playerOneGameScore.IsWinner)
             {
-                playerScore1.Player.TotalWonGamesScore++;
-                playerScore2.Player.TotalLoseGamesScore++;
-                return playerScore1.Player;
+                playerOneGameScore.Player.TotalWonGamesScore++;
+                playerTwoGameScore.Player.TotalLoseGamesScore++;
+                return playerOneGameScore.Player;
             }
 
-            if (playerScore2.IsWinner)
+            if (playerTwoGameScore.IsWinner)
             {
-                playerScore2.Player.TotalWonGamesScore++;
-                playerScore1.Player.TotalLoseGamesScore++;
-                return playerScore2.Player;
+                playerTwoGameScore.Player.TotalWonGamesScore++;
+                playerOneGameScore.Player.TotalLoseGamesScore++;
+                return playerTwoGameScore.Player;
             }
 
             return null;
         }
     }
 
-    public IPlayer Loser
+    public IPlayer GameLoser
     {
         get
         {
-            if (playerScore1.IsWinner)
+            if (playerOneGameScore.IsWinner)
             {
-                return playerScore2.Player;
+                return playerTwoGameScore.Player;
             }
 
-            if (playerScore2.IsWinner)
+            if (playerTwoGameScore.IsWinner)
             {
-                return playerScore2.Player;
+                return playerTwoGameScore.Player;
             }
 
             return null;

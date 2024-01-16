@@ -1,6 +1,6 @@
 namespace TennisCalculator.Interfaces;
 
-public interface IPlayerScore
+public interface IGameScore
 {
     bool HasAdvantage { get; }
     bool HasFortyPoints { get; }
@@ -8,7 +8,7 @@ public interface IPlayerScore
     bool IsDeuce { get; }
     bool IsWinner { get; }
     IPlayer Player { get; }
-    IScore Score { get; set; }
+    IPointValue PointValue { get; set; }
 
     void DeuceScore();
     void FortyScore();

@@ -3,7 +3,11 @@
 TennisCalculator/obj/
 TennisCalculator/bin/
 
+TennisCalculator.Tests/obj/
+TennisCalculator.Tests/bin/
+
 *.editorconfig
 *.cache
 *.props
 *.targets
+*.dll

@@ -11,7 +11,7 @@ public class Set
 
     public Set(int matchId, IPlayer player1, IPlayer player2)
     {
-        this.MatchId = matchId;
+        // this.MatchId = matchId;
         player1SetScore = new PlayerSetScore(player1);
         player2SetScore = new PlayerSetScore(player2);
         StartNewGame();
@@ -61,7 +61,7 @@ public class Set
 
     private void StartNewGame()
     {
-        currentGame = new Game(MatchId, player1SetScore.Player, player2SetScore.Player);
+        currentGame = new Game(player1SetScore.Player, player2SetScore.Player);
     }
 
     public IPlayer SETWinner { get; private set; }
