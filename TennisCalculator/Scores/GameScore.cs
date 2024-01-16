@@ -1,6 +1,6 @@
 using TennisCalculator.Interfaces;
 
-namespace TennisCalculator;
+namespace TennisCalculator.Scores;
 
 public class GameScore : IGameScore
 {

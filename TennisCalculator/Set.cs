@@ -1,4 +1,5 @@
 using TennisCalculator.Interfaces;
+using TennisCalculator.Scores;
 
 namespace TennisCalculator;
 
@@ -11,7 +12,7 @@ public class Set
 
     public Set(int matchId, IPlayer player1, IPlayer player2)
     {
-        // this.MatchId = matchId;
+        this.MatchId = matchId;
         player1SetScore = new PlayerSetScore(player1);
         player2SetScore = new PlayerSetScore(player2);
         StartNewGame();

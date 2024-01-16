@@ -13,22 +13,22 @@ public class GameTests
 
         IGame game = new Game(player1, player2);
 
-        // Player 1 wins 1 point
+        // Player 1 wins 1 point (15:0)
         game.PlayerWinPoint(player1);
 
-        // Player 1 wins 1 point
+        // Player 1 wins 1 point (30:0)
         game.PlayerWinPoint(player1);
 
-        // Player 2 wins 1 point
+        // Player 2 wins 1 point (30:15)
         game.PlayerWinPoint(player2);
 
-        // Player 1 wins 1 point
+        // Player 1 wins 1 point (40:15)
         game.PlayerWinPoint(player1);
 
-        // Player 2 wins 1 point
+        // Player 2 wins 1 point (40:30)
         game.PlayerWinPoint(player2);
 
-        // Player 1 wins 1 point
+        // Player 1 wins 1 point (Game)
         game.PlayerWinPoint(player1);
         Assert.Equal("Person A", game.GameWinner.Name);
         Assert.True(game.GameEnd);

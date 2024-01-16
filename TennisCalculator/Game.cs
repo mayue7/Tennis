@@ -1,28 +1,29 @@
 using TennisCalculator.Interfaces;
+using TennisCalculator.Scores;
 
 namespace TennisCalculator;
 
 public class Game : IGame
 {
-    private IGameScore playerOneGameScore;
-    private IGameScore playerTwoGameScore;
+    private IGameScore player1GameScore;
+    private IGameScore player2GameScore;
 
     public Game(IPlayer player1, IPlayer player2)
     {
-        playerOneGameScore = new GameScore(player1);
-        playerTwoGameScore = new GameScore(player2);
+        player1GameScore = new GameScore(player1);
+        player2GameScore = new GameScore(player2);
     }
 
     public void PlayerWinPoint(IPlayer player)
     {
-        if (playerOneGameScore.Player == player)
+        if (player1GameScore.Player == player)
         {
-            RoundPoint(playerOneGameScore, playerTwoGameScore);
+            RoundPoint(player1GameScore, player2GameScore);
         }
         else
-        if (playerTwoGameScore.Player == player)
+        if (player2GameScore.Player == player)
         {
-            RoundPoint(playerTwoGameScore, playerOneGameScore);
+            RoundPoint(player2GameScore, player1GameScore);
         }
         else
         {
@@ -61,6 +62,8 @@ public class Game : IGame
         if (pointWinner.HasFortyPoints)
         {
             pointWinner.WinTheGame();
+            // Console.WriteLine($"GameFile: {pointWinner.Player.Name}, {pointWinner.IsWinner}");
+
             return;
         }
 
@@ -80,18 +83,18 @@ public class Game : IGame
     {
         get
         {
-            if (playerOneGameScore.IsWinner)
+            if (player1GameScore.IsWinner)
             {
-                playerOneGameScore.Player.TotalWonGamesScore++;
-                playerTwoGameScore.Player.TotalLoseGamesScore++;
-                return playerOneGameScore.Player;
+                player1GameScore.Player.TotalWonGamesScore++;
+                player2GameScore.Player.TotalLoseGamesScore++;
+                return player1GameScore.Player;
             }
 
-            if (playerTwoGameScore.IsWinner)
+            if (player2GameScore.IsWinner)
             {
-                playerTwoGameScore.Player.TotalWonGamesScore++;
-                playerOneGameScore.Player.TotalLoseGamesScore++;
-                return playerTwoGameScore.Player;
+                player2GameScore.Player.TotalWonGamesScore++;
+                player1GameScore.Player.TotalLoseGamesScore++;
+                return player2GameScore.Player;
             }
 
             return null;
@@ -102,14 +105,14 @@ public class Game : IGame
     {
         get
         {
-            if (playerOneGameScore.IsWinner)
+            if (player1GameScore.IsWinner)
             {
-                return playerTwoGameScore.Player;
+                return player2GameScore.Player;
             }
 
-            if (playerTwoGameScore.IsWinner)
+            if (player2GameScore.IsWinner)
             {
-                return playerTwoGameScore.Player;
+                return player2GameScore.Player;
             }
 
             return null;

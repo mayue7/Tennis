@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C#: TennisCalculator",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/TennisCalculator/TennisCalculator.csproj",
+            "launchConfigurationId": "TargetFramework=;TennisCalculator"
+        }
+    ]
+}

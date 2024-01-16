@@ -34,6 +34,7 @@ public class SetTests
         Assert.Equal("Person A", set.SETWinner.Name);
     }
 
+
     void PlayOneGame(Set set, IPlayer player1, IPlayer player2)
     {
         // Player 1 wins 1 point (15 : 0)

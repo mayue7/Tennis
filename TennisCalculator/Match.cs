@@ -1,4 +1,5 @@
 using TennisCalculator.Interfaces;
+using TennisCalculator.Scores;
 
 namespace TennisCalculator;
 
@@ -60,7 +61,10 @@ public class Match
             MatchWinner = setWinner.Player;
             MatchLoser = setLoser.Player;
         }
-        StartNewSet();
+        else
+        {
+            StartNewSet();
+        }
     }
 
     public void QueryMatchResults()
