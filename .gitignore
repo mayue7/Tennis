@@ -1,0 +1,9 @@
+
+.DS_Store
+TennisCalculator/obj/
+TennisCalculator/bin/
+
+*.editorconfig
+*.cache
+*.props
+*.targets
